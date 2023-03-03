@@ -21,15 +21,18 @@ Route::get('/', function () {
 
 Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
     Route::get('/', [PrinterController::class, 'index'])->name('dashboard');
+    Route::resource('printer', PrinterController::class);
+
 
     // update
-    Route::get('edit-item/update/{id}', [PrinterController::class, 'edit'])->name('editItem');
+    Route::post('printer/update/{id}', [PrinterController::class, 'update'])->name('printer.update');
+    Route::get('printer/destroy/{id}', [PrinterController::class, 'destroy'])->name('printer.destroy');
 });
 
 
-Route::get('/inputItem', function () {
-    return view('Admin.input');
-})->middleware(['auth', 'role:admin'])->name('inputItem');
+//     Route::get('/inputItem', function () {
+//     return view('Admin.input');
+// })->middleware(['auth', 'role:admin'])->name('inputItem');
 
 Route::get('/user', function () {
     return view('user');

@@ -7,33 +7,33 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            @forelse ($printers as $printer)
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
 
-                <table class="w-full text-sm text-left text-gray-500 ">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                No.
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Product name
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Stock
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Price
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Desc
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($printers as $printer)
+                    <table class="w-full text-sm text-left text-gray-500 ">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    No.
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Product name
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Stock
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Price
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Desc
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
                             <tr class="bg-white border-b ">
                                 <th scope="row" class="px-6 py-4 font-medium text-gray-900  ">
                                     {{ $loop->iteration }}
@@ -52,22 +52,56 @@
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="flex gap-2">
-                                        <a href={{ route('editItem', $printer->id) }}>
+                                        <a href={{ route('printer.edit', $printer->id) }}>
                                             <x-feathericon-edit />
                                         </a>
-                                        <button>
+                                        <a href="{{ route('printer.destroy', $printer->id) }}">
                                             <x-feathericon-x />
 
-                                        </button>
+                                        </a>
                                     </div>
                                 </td>
                             </tr>
-                        @endforeach
+                        @empty
+                            <tr>
 
-                    </tbody>
-                </table>
+                                <div class="mt-2 p-4 mb-4 text-sm text-gray-900 rounded-lg bg-white dark:bg-gray-800 dark:text-red-400"
+                                    role="alert">
+                                    <span class="font-medium">
 
-            </div>
+                                        No item here
+                                    </span>
+                                </div>
+                            </tr>
+            @endforelse
+
+
+            </tbody>
+            </table>
         </div>
+
+        @if (Session::has('success'))
+            <div class="mt-2 p-4 mb-4 text-sm text-green-400-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400"
+                role="alert">
+                <span class="font-medium">Success alert!</span> {{ Session::get('success') }}
+            </div>
+        @endif
+        @if (Session::has('updated'))
+            <div class="mt-2 p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50 dark:bg-gray-800 dark:text-yellow-300"
+                role="alert">
+
+                <span class="font-medium">Updated alert!</span> {{ Session::get('updated') }}
+            </div>
+        @endif
+        @if (Session::has('delete'))
+            <div class="mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400"
+                role="alert">
+
+                <span class="font-medium">Deleted alert!</span> {{ Session::get('delete') }}
+            </div>
+        @endif
+
+
+    </div>
     </div>
 </x-app-layout>

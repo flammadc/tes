@@ -10,33 +10,33 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <form>
-
+                    <form action="{{ route('printer.store') }}" method="post">
+                        @csrf
                         <div class="mb-6">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Product
                                 Name</label>
                             <input type="text" id="name"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                                placeholder="{{ $printer->name }}" required>
+                                placeholder="Brother" name="name" required>
                         </div>
                         <div class="mb-6">
                             <label for="qty" class="block mb-2 text-sm font-medium text-gray-900 ">Quantity</label>
                             <input type="number" id="qty"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                                placeholder="{{ $printer->qty }}" required>
+                                placeholder="32" name="qty" required>
                         </div>
                         <div class="mb-6">
                             <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Price</label>
                             <input type="number" id="price"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                                placeholder="{{ $printer->price }}" required>
+                                placeholder="15000000" name="price" required>
                         </div>
                         <div class="mb-6">
                             <label for="desc"
                                 class="block mb-2 text-sm font-medium text-gray-900 ">Description</label>
                             <input type="text" id="desc"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                                placeholder="{{ $printer->desc }}" required>
+                                placeholder="Lorem ipsum..." name="desc" required>
                         </div>
 
 
