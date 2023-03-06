@@ -10,7 +10,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <form action="{{ route('printer.store') }}" method="post">
+                    <form action="{{ route('printer.store') }}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="mb-6">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Product
@@ -37,6 +37,15 @@
                             <input type="text" id="desc"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                                 placeholder="Lorem ipsum..." name="desc" required>
+                        </div>
+                        <div class="mb-6">
+
+                            <label class="block mb-2 text-sm font-medium text-gray-900 " for="file_input">Upload
+                                file</label>
+                            <input
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                id="file_input" type="file" name="img" required>
+
                         </div>
 
 

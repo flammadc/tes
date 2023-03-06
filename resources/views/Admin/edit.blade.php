@@ -10,7 +10,8 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
 
-                    <form action="{{ route('printer.update', $printer->id) }}" method="post">
+                    <form action="{{ route('printer.update', $printer->id) }}" method="post"
+                        enctype="multipart/form-data">
                         @csrf
                         <div class="mb-6">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Product
@@ -37,6 +38,18 @@
                             <input type="text" id="desc"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
                                 value="{{ $printer->desc }}" name="desc" required>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block mb-2 text-sm font-medium text-gray-900 " for="file_input">Edit
+                                file</label>
+                            <div class="mb-2">
+                                <img class="rounded-sm w-20 aspect-square" src="{{ asset('img/' . $printer->img) }}"
+                                    alt="image description">
+                            </div>
+                            <input
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                value="{{ $printer->img }}" id="file_input" type="file" name="img" required>
+
                         </div>
 
 

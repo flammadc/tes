@@ -18,6 +18,9 @@
                     <x-nav-link :href="route('printer.create')" :active="request()->routeIs('printer.create')">
                         {{ __('Input Item') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('user.index')" :active="request()->routeIs('user.index')">
+                        {{ __('User UI') }}
+                    </x-nav-link>
 
                 </div>
             </div>

@@ -37,15 +37,23 @@ class PrinterController extends Controller
             'name' => 'required',
             'qty' => 'required',
             'price' => 'required',
-            'desc' => 'required'
+            'desc' => 'required',
+            'img' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ]);
+        if ($validator->fails()) {
+            return back()->with('error', 'Some problem occurred, please try again');
+        }
 
         $printer = new Printer();
         $printer->name = $request['name'];
         $printer->qty = $request['qty'];
         $printer->price = $request['price'];
         $printer->desc = $request['desc'];
-        // add other fields
+        $printer->img = $request['img'];
+        if ($request->hasFile('img')) {
+            $request->file('img')->move('img/', $request->file('img')->getClientOriginalName());
+            $printer->img = $request->file('img')->getClientOriginalName();
+        }
         $printer->save();
 
 
@@ -89,14 +97,17 @@ class PrinterController extends Controller
     public function update(UpdatePrinterRequest $request, $id)
     {
         //
+
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'qty' => 'required',
             'price' => 'required',
-            'desc' => 'required'
+            'desc' => 'required',
+            'img' => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+
         ]);
         if ($validator->fails()) {
-            return back()->with('error', 'gagal tolol');
+            return back()->with('error', 'Some problem occurred, please try again');
         }
 
         $printer = Printer::find($id);
@@ -104,7 +115,11 @@ class PrinterController extends Controller
         $printer->qty = $request['qty'];
         $printer->price = $request['price'];
         $printer->desc = $request['desc'];
-        // add other fields
+        $printer->img = $request['img'];
+        if ($request->hasFile('img')) {
+            $request->file('img')->move('img/', $request->file('img')->getClientOriginalName());
+            $printer->img = $request->file('img')->getClientOriginalName();
+        }
         $printer->update();
 
 

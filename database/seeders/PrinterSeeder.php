@@ -20,18 +20,28 @@ class PrinterSeeder extends Seeder
                 'desc' => 'dsadsa',
                 'qty' => 10,
                 'price' => 2000000,
+                'img' => 'hp.jpg',
             ],
             [
                 'name' => 'Brother',
                 'desc' => 'dsadsa',
                 'qty' => 3,
                 'price' => 700000,
+                'img' => 'brother.jpg',
             ],
             [
                 'name' => 'Canon',
                 'desc' => 'dsadsa',
                 'qty' => 22,
                 'price' => 200000,
+                'img' => 'canon.png',
+            ],
+            [
+                'name' => 'Epson',
+                'desc' => 'dsadsa',
+                'qty' => 22,
+                'price' => 200000,
+                'img' => 'epson.jpg',
             ],
         ];
 

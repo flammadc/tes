@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\PrinterController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\PrinterController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,17 +27,18 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
 
     // update
     Route::post('printer/update/{id}', [PrinterController::class, 'update'])->name('printer.update');
+
+    // delete
     Route::get('printer/destroy/{id}', [PrinterController::class, 'destroy'])->name('printer.destroy');
+
+    Route::resource('user', UserController::class);
+    // update
+    Route::post('user/update/{id}', [UserController::class, 'update'])->name('user.update');
 });
 
-
-//     Route::get('/inputItem', function () {
-//     return view('Admin.input');
-// })->middleware(['auth', 'role:admin'])->name('inputItem');
-
-Route::get('/user', function () {
-    return view('user');
-})->middleware(['auth', 'role:user'])->name('user');
+Route::prefix('user')->middleware('auth', 'role:user')->group(function () {
+    Route::resource('collection', UserController::class);
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
