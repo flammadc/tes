@@ -8,7 +8,23 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="overflow-hidden shadow-sm sm:rounded-lg">
+ @if (Session::has('success'))
+                <div class="mt-2 p-4 mb-4 text-sm text-green-400-800 rounded-lg bg-green-50" role="alert">
+                    <span class="font-medium">Success alert!</span> {{ Session::get('success') }}
+                </div>
+            @endif
+            @if (Session::has('updated'))
+                <div class="mt-2 p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50" role="alert">
 
+                    <span class="font-medium">Updated alert!</span> {{ Session::get('updated') }}
+                </div>
+            @endif
+            @if (Session::has('delete'))
+                <div class="mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
+
+                    <span class="font-medium">Deleted alert!</span> {{ Session::get('delete') }}
+                </div>
+            @endif
                 <table class="w-full text-sm text-left text-gray-500 ">
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
                         <tr>
@@ -88,23 +104,7 @@
                 </table>
             </div>
 
-            @if (Session::has('success'))
-                <div class="mt-2 p-4 mb-4 text-sm text-green-400-800 rounded-lg bg-green-50" role="alert">
-                    <span class="font-medium">Success alert!</span> {{ Session::get('success') }}
-                </div>
-            @endif
-            @if (Session::has('updated'))
-                <div class="mt-2 p-4 mb-4 text-sm text-yellow-800 rounded-lg bg-yellow-50" role="alert">
-
-                    <span class="font-medium">Updated alert!</span> {{ Session::get('updated') }}
-                </div>
-            @endif
-            @if (Session::has('delete'))
-                <div class="mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">
-
-                    <span class="font-medium">Deleted alert!</span> {{ Session::get('delete') }}
-                </div>
-            @endif
+           
 
 
         </div>

@@ -37,7 +37,9 @@ Route::prefix('admin')->middleware('auth', 'role:admin')->group(function () {
 });
 
 Route::prefix('user')->middleware('auth', 'role:user')->group(function () {
-    Route::resource('collection', UserController::class);
+    Route::resource('/', UserController::class);
+    //update
+    Route::post('update/{id}', [UserController::class, 'update'])->name('user.update');
 });
 
 Route::middleware('auth')->group(function () {

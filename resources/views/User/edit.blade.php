@@ -44,7 +44,7 @@
                         <label for="qty" class="block mb-2 text-base font-semibold text-gray-900 ">Quantity</label>
                         <input type="number" id="qty"
                             class="mb-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 "
-                            value="1" name="qty" required>
+                            value="1" name="qty" required min="1" max="{{$printer->qty}}">
                         <button type="submit"
                             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Buy</button>
                     </form>
